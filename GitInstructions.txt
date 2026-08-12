@@ -1,0 +1,50 @@
+Double click git-cmd.exe
+
+First you must set your username and email:
+> git config user.name "Your Name"
+> git config user.email "your@email.com"
+
+Using git commands you can navigate your project:
+Command				| Purpose
+________________________________|_____________________________________________
+$ cd				| "Change Directory" to your repository
+$ ls				| List the contents of the current directory.
+$ git help			| List valid commands (please don't use commands you don't understand).
+$ git status			| List the current state of all file in your repository.
+$ git pull			| Update your local repository from BitBucket.
+$ git add <file>		| This includes new or changed files into the next commit.
+$ git commit -m <message>	| Commit new changes to the log.
+$ git push			| Update BitBucket with your most recent commit.
+$ git log			| Display a list commits.
+$ git diff			| Display exact changes since last commit.
+$ git branch -av		| List all available branches.
+$ git checkout <branch>		| Navigate to a specific branch.
+$ git checkout -b <branch>	| Create a new branch.
+
+Process
+________________________________
+1) Create a new branch based upon your issue number:			"$ git checkout dev", "$ git checkout -b TPR<issue #>"
+2) Make your changes in this directory.
+3) View the modified files:						"$ git status"
+4) Add your changes for all files mentioned in step 3:			"$ git add ."
+5) Commit your changes to the stack:					"$ git commit -m 'TPR<issue #>:<commit message>'"
+	5.1) If you forgot the "-m" and are taken to a text editor, don't panic
+	you are just being asked for a commit message.
+	5.2) Press "i" to begin inserting your message.
+	5.3) Type your commit message and it should appear as you type.
+	5.4) When complete, press "esc" to exit insertion mode.
+	5.5) Press ":" to enter command mode.
+	5.6) Type "wq" to write and quit.
+6) Test your changes.
+7) Merge your changes in to dev.
+	7.1) Checkout dev:						"$ git checout dev"
+	7.2) Pull any new updeate in dev:				"$ git pull"
+	7.3) Merge your issue branch into dev:				"$ git merge TPR<issue #>"
+	7.4) Commit your merge:						"$ git commit -m 'TPR<issue #>: Merged into dev'"
+8) Update your changes to bitbucket:					"$ git push"
+	8.1) If the push didn't work, try pulling first:		"$ git pull"
+	8.2) If you get a conflict, don't panic, list conflicted files:	"$ git status".
+	8.3) Edit those files and remove tagging ("HEAD>>...")
+	8.4) Indicate that your conflicts have been fixed:		"$ git add."
+	8.5) State that you have fixed the problem:			"$ git commit -m 'TPR<issue #>: '"
+	8.6) Push again "git push"
